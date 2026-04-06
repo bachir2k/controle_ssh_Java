@@ -1,12 +1,14 @@
 package client;
 
+import commun.Config;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import commun.Config;
+
 
 
 public class ConnexionReseau {

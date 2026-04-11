@@ -26,6 +26,12 @@ public class ClientTest {
                 System.out.print("Commande : ");
                 String cmd = scanner.nextLine();
 
+                if (commun.Config.CMD_EXIT.equalsIgnoreCase(cmd.trim())) {
+                    out.println(cmd);
+                    System.out.println("Fermeture de la connexion...");
+                    break;
+                }
+
                 out.println(cmd);
 
                 String reponse;

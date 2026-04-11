@@ -10,13 +10,15 @@ public class ServeurApp {
 
         try {
             ServerSocket serveur = new ServerSocket(port);
-            System.out.println("Serveur démarré sur le port " + port);
+            System.out.println("\n Serveur démarré sur le port " + port);
 
+            int clientCount = 0;
             while (true) {
                 Socket client = serveur.accept();
-                System.out.println("Nouvelle connexion !");
+                clientCount++;
+                System.out.println("Nouvelle connexion ! Client #" + clientCount);
 
-                GestionnaireClient gestionnaire = new GestionnaireClient(client);
+                GestionnaireClient gestionnaire = new GestionnaireClient(client, clientCount);
                 Thread thread = new Thread(gestionnaire);
                 thread.start();
             }

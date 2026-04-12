@@ -18,6 +18,7 @@ timeout /t 1 /nobreak >nul
 
 echo.
 echo [2/2] Compilation...
+cd src\main\java
 javac client\*.java serveur\*.java commun\*.java
 if errorlevel 1 (
     echo Erreur lors de la compilation!
@@ -31,10 +32,12 @@ echo Compilation terminee avec succes!
 echo ===================================
 echo.
 
-echo Lancement du serveur...
-echo    java serveur.Serveur
+echo Lancement du serveur :
+echo    Consone : java serveur.ServeurApp
+echo    GUI     : java serveur.ServeurGUI
 
-echo Lancement du client...
-echo    java client.Client
+echo Lancement du client :
+echo    Console : java client.ClientTest
+echo    GUI     : java client.ClientGUI
 
 echo.

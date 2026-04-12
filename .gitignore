@@ -1,5 +1,8 @@
 # Compiled class files
-*.class
+src\main\java\client\*.class 
+src\main\java\serveur\*.class
+src\main\java\commun\*.class
+
 
 # Log files
 *.log

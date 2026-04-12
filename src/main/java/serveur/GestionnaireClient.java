@@ -17,7 +17,7 @@ public class GestionnaireClient implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("[" + clientId + "] Client connecté : " + socket.getInetAddress());
+            log("Client connecté : " + socket.getInetAddress());
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream(), "Cp850")
@@ -30,10 +30,10 @@ public class GestionnaireClient implements Runnable {
             String commande;
 
             while ((commande = in.readLine()) != null) {
-                System.out.println("Commande reçue : " + commande);
+                log("Commande reçue : " + commande);
 
                 if (Config.CMD_EXIT.equals(commande.trim())) {
-                    System.out.println("Déconnexion demandée par le client.");
+                    log("Déconnexion demandée par le client.");
                     break;
                 }
 
@@ -44,16 +44,20 @@ public class GestionnaireClient implements Runnable {
             }
 
         } catch (Exception e) {
-            System.out.println("Erreur client (" + socket.getInetAddress() + ") : " + e.getMessage());
+            log("Erreur client : " + e.getMessage());
         } finally {
             try {
                 if (socket != null && !socket.isClosed()) {
                     socket.close();
                 }
-                System.out.println("[" + clientId + "] Session terminée pour : " + socket.getInetAddress());
+                log("Session terminée pour : " + socket.getInetAddress());
             } catch (IOException e) {
                 System.err.println("Erreur lors de la fermeture du socket : " + e.getMessage());
             }
         }
+    }
+
+    protected void log(String message) {
+        System.out.println("[" + clientId + "] " + message);
     }
 }
